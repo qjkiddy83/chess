@@ -1,0 +1,71 @@
+@mixin initPos($vw) {
+  @for $i from 0 through 9 {
+    li:nth-child(#{$i+1}){
+      left: ($i%3*$vw)+vw;
+      top: (floor($i/3)*$vw)+vw;
+    }
+  }
+}
+
+.line{
+  border: 2px solid #000;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  
+}
+li {
+    position: absolute;
+    background: #000;
+    list-style: none;
+    border-radius:50%;
+    width: 8vw;
+    height: 8vw;
+    margin: -4vw 0 0 -4vw;
+    &:nth-child(5){
+      pointer-events: none;
+      visibility: hidden;
+    }
+    &.white{
+      background:#fff;
+    }
+    &.black{
+      background:#000;
+    }
+    &.disable{
+      background:gray;
+    }
+    &.init{
+      background:transparent;
+      &:before{
+        content: '';
+        position: absolute;
+        width: 2vw;
+        height: 2vw;
+        background:#000;
+        left: 3vw;
+        top: 3vw;
+      }
+    }
+  }
+.outer-line {
+  @extend .line;
+  width: 90vw;
+  height: 90vw;
+  @include initPos(45);
+}
+
+.center-line {
+  @extend .line;
+  width: 60vw;
+  height: 60vw;
+  @include initPos(30);
+}
+
+.inner-line {
+  @extend .line;
+  width: 30vw;
+  height: 30vw;
+  @include initPos(15);
+}
