@@ -21,6 +21,7 @@ export default {
 body{
   background: #ccc;
   max-width: 640px;
+  padding-top: 15px;
 }
 *{
   padding: 0;
