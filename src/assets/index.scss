@@ -1,23 +1,23 @@
 @mixin initPos($vw) {
   @for $i from 0 through 2 {
     li:nth-child(#{$i+1}){
-      left: ($i%3*$vw)+vw;
-      top: (floor($i/3)*$vw)+vw;
+      left: ($i%3*$vw)+%;
+      top: (floor($i/3)*$vw)+%;
     }
   }
   li:nth-child(4){
-    left: (2*$vw)+vw;
-    top: $vw+vw;
+    left: (2*$vw)+%;
+    top: $vw+%;
   }
   @for $i from 4 through 6 {
     li:nth-child(#{$i+1}){
-      left: ((3-$i)%3*$vw)+vw;
-      top: (2*$vw)+vw;
+      left: ((3-$i)%3*$vw)+%;
+      top: (2*$vw)+%;
     }
   }
   li:nth-child(8){
     left: 0;
-    top: $vw+vw;
+    top: $vw+%;
   }
 }
 
@@ -46,9 +46,9 @@ li {
     background: #000;
     list-style: none;
     border-radius:50%;
-    width: 8vw;
-    height: 8vw;
-    margin: -4vw 0 0 -4vw;
+    width: 44px;
+    height: 44px;
+    margin: -22px 0 0 -22px;
     &.white{
       background:#fff;
     }
@@ -63,11 +63,11 @@ li {
       &:before{
         content: '';
         position: absolute;
-        width: 2vw;
-        height: 2vw;
+        width: 20px;
+        height: 20px;
         background:#000;
-        left: 3vw;
-        top: 3vw;
+        left: 12px;
+        top: 12px;
       }
     }
     &.moving{
@@ -76,21 +76,24 @@ li {
   }
 .outer-line {
   @extend .line;
-  width: 90vw;
-  height: 90vw;
-  @include initPos(45);
+  width: 90%;
+  height: 0;
+  padding-bottom:90%;
+  @include initPos(50);
 }
 
 .center-line {
   @extend .line;
-  width: 60vw;
-  height: 60vw;
-  @include initPos(30);
+  width: 60%;
+  padding-bottom:60%;
+  height: 0;
+  @include initPos(50);
 }
 
 .inner-line {
   @extend .line;
-  width: 30vw;
-  height: 30vw;
-  @include initPos(15);
+  width: 30%;
+  padding-bottom:30%;
+  height: 0;
+  @include initPos(50);
 }
